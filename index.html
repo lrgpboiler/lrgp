@@ -93,6 +93,31 @@
         }
 
 	</style>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	<script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "9aoB7v6Q8Js7A8xVo",
+            });
+        })();
+    </script>
+	 <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('service_42nopem', 'template_xck05gb', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+						alert("Email sent successfully!");
+                		document.getElementById("contact-form").reset();
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
 </head>
 <body>
 	
@@ -145,10 +170,10 @@
 	</nav>
 	<!-- END nav -->
 	
-	<section class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+	<section class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" >
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+			<div class="row no-gutters slider-text js-fullheight align-items-center" >
 				<div class="col-lg-8 ftco-animate">
 					<div class="mt-5">
 						<h1 class="mb-4">We Do <br>Steam Energy <br>Engineering Works <br>& Agency in Dindigul</h1>
@@ -735,26 +760,26 @@
 
 			<div class="row block-9">
 				<div class="col-md-8">
-					<form action="#" class="p-4 p-md-5 contact-form">
+					<form id="contact-form" class="p-4 p-md-5 contact-form">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Your Name">
+									<input type="text" name="name" class="form-control" placeholder="Your Name">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Your Email">
+									<input type="text" name="email" class="form-control" placeholder="Your Email">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Subject">
+									<input type="text" name="subject" class="form-control" placeholder="Subject">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
-									<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+									<textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
 								</div>
 							</div>
 							<div class="col-md-12">
